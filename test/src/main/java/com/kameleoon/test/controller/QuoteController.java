@@ -2,11 +2,8 @@ package com.kameleoon.test.controller;
 
 import com.kameleoon.test.dto.QuoteDto;
 import com.kameleoon.test.dto.QuoteDtoResponse;
-import com.kameleoon.test.dto.UserDto;
-import com.kameleoon.test.dto.UserDtoResponse;
-import com.kameleoon.test.service.UserService;
+import com.kameleoon.test.service.QuoteService;
 import com.kameleoon.test.utilities.Constants;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,12 +13,7 @@ import java.util.List;
 @RequestMapping(path = "/quotes")
 @RequiredArgsConstructor
 public class QuoteController {
-    private final UserService service;
-
-    @PostMapping("/user")
-    public UserDtoResponse createUser(@Valid @RequestBody UserDto user) {
-        return service.createUser(user);
-    }
+    private final QuoteService service;
 
     @GetMapping
     public List<QuoteDto> getQuotes(@RequestParam(required = false, defaultValue = "false") boolean isRandom,
